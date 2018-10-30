@@ -87,26 +87,15 @@ class request_session
 		}
 	}
 	
-	public function set_sess_dir($directory = false)
+	public function set_sess_dir($directory)
 	{
-		if( !$directory)
+		$this->directory = $directory;
+		
+		if( $this->flags & REQUEST_SESS_NEW)
 		{
-			while(true)
-			{
-				$this->directory = "{$directory}/".uniqid();
-				if( !file_exists($this->directory)) break;
-			}
-		}
-		else
-		{
-			$this->directory = $directory;
+			$filename = $this->get_cookie_file();
 			
-			if( $this->flags & REQUEST_SESS_NEW)
-			{
-				$filename = $this->get_cookie_file();
-				
-				if( file_exists($filename)) unlink($filename);
-			}
+			if( file_exists($filename)) unlink($filename);
 		}
 	}
 	
@@ -114,7 +103,7 @@ class request_session
 	{
 		if( !$this->directory)
 		{
-			$this->set_sess_dir();
+			return false;
 		}
 		
 		return $this->directory;
@@ -190,7 +179,8 @@ class request_session
 		set_cookies_in_file($cookies, $this->get_cookie_file());
 	}
 	
-	public function get_cookie() {
+	public function get_cookie()
+	{
 		return get_cookies_from_file( $this->get_cookie_file());
 	}
 }
