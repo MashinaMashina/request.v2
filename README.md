@@ -16,8 +16,8 @@ echo $request->dump();
 Программа посылает GET запрос на адрес https://github.com и выводит отчет в HTML формате.  
   
 ## Функции класса request  
-**\_\_construct($url) ** - принимает один параметр в виде URL.  
-**option($key, $value) **- устанавливает параметр для класса. Доступные параметры:  
+**\_\_construct($url)** - принимает один параметр в виде URL.  
+**option($key, $value)** - устанавливает параметр для класса. Доступные параметры:  
 > convert_encoding - (bool) включает / отключает автоматическое преобразование ответа сервера в UTF-8  
   
 **set($key, $value)** - устанавливает параметр CURL. Список доступных параметров: http://php.net/manual/ru/function.curl-setopt.php .  
@@ -38,7 +38,7 @@ $request->set_headers('Accept-Encoding', 'gzip, deflate, br');
 **dump()** - возвращает полный отчет о запросе оформленный с помощью HTML.  
   
 ### Переменные класса request  
-**request::response **- ответ сервера без заголовком  
+**request::response** - ответ сервера без заголовком  
 **request::info** - массив заголовков ответа сервера  
 **request::headers** - строка заголовков ответа сервера  
 **request::error_code** - код ошибки, если имеется  
@@ -59,7 +59,7 @@ REQUEST_SESS_NEW - сессия новая, не требуется очисти
 **set_sess_dir($directory)** - устанавливает папку для хранения данных сессии. В данной версии в папке сохраняются только файлы cookie, для полного сохранения данных используйте export().  
 **get_sess_dir()** - возвращает папку хранения cookie, FALSE если она не установлена.  
 **get_cookie_file()** - возвращает путь к файлу с cookie. Если установлен флаг REQUEST_SESS_TEMP, возвращается путь к временному файлу.  
-**get_cookie_string() **- возвращает все cookie в формате Netscape HTTP Cookie.  
+**get_cookie_string()** - возвращает все cookie в формате Netscape HTTP Cookie.  
 **set_cookie_string($cookie)** - устанавливает cookie. Параметр $cookie в формате Netscape HTTP Cookie.  
 **set_cookie($cookie)** - добавляет cookie. Параметр $cookie передается в виде массива со значениями domain, domainonly, path, secure, expires, key, value. Предустановленные параметры:  
 ```php  
