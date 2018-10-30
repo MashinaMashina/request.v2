@@ -85,3 +85,6 @@ function shorten($url, $proxy = false)
 	
 	return $json['data']['anon_shorten']['link'];
 }
+
+$url = 'https://vk.com';
+echo "Shorten: of {$url}: ".shorten($url);
