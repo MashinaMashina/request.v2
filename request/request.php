@@ -221,7 +221,7 @@ class request {
 		
 		curl_close($ch);
 
-		if($this->info['http_code'] !== 200)
+		if( !$this->error_code and $this->info['http_code'] !== 200)
 		{
 			$this->error_code = 1000;
 			$this->error_msg = 'Response code is '.$this->info['http_code'];
